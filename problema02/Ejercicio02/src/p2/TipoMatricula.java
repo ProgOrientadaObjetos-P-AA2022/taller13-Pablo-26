@@ -5,42 +5,59 @@
  */
 package p2;
 
-import p1.MatriculaCampamento;
-import p1.MatriculaColegio;
+import java.util.ArrayList;
+import p1.*;
 
 /**
  *
  * @author reroes
  */
 public class TipoMatricula {
+    
+    
+    
     private double promedioMatriculas;
-    private MatriculaCampamento campamento;
-    private MatriculaColegio colegio;
-    // private MatriculaEscuela escuela;
-    // private MatriculaJardin jardin;
-    // private MatriculaMaternal maternal;
-    // private MatriculaMaternal maternal2;
+    private ArrayList<Matricula> matriculas;
     
-    public void establecerMatriculaCampamento(MatriculaCampamento c){
-        campamento = c;
-    }
+//    private MatriculaCampamento campamento;
+//    private MatriculaColegio colegio;
+//    private MatriculaEscuela escuela;
+//    private MatriculaJardin jardin;
+//    private MatriculaMaternal maternal;
+//    private MatriculaMaternal maternal2;
     
-    public void establecerMatriculaColegio(MatriculaColegio c){
-        colegio = c;
-    }
+//    public void establecerMatriculaCampamento(MatriculaCampamento c){
+//        campamento = c;
+//    }
+//    
+//    public void establecerMatriculaColegio(MatriculaColegio c){
+//        colegio = c;
+//    }
+//    
+//    public MatriculaCampamento obtenerMatriculaCampamento(){
+//        return campamento;
+//    }
+//    
+//    public MatriculaColegio obtenerMatriculaColegio(){
+//        return colegio;
+//    }
     
-    public MatriculaCampamento obtenerMatriculaCampamento(){
-        return campamento;
-    }
-    
-    public MatriculaColegio obtenerMatriculaColegio(){
-        return colegio;
+    public void establecerMatriculas(ArrayList<Matricula> mt){
+        matriculas = mt;
     }
     
     public void establecerPromedioTarifas(){
-        promedioMatriculas = (obtenerMatriculaCampamento().obtenerTarifa() + 
-                obtenerMatriculaColegio().obtenerTarifa())/2;
+        double suma = 0;
+        for (int i = 0; i < matriculas.size(); i++) {
+            
+            suma = suma + matriculas.get(i).obtenerTarifa();
+        }
+        promedioMatriculas = suma / matriculas.size();
         
+    }
+    
+    public ArrayList<Matricula> obtenerMatriculas(){
+        return matriculas;
     }
     
     public double obtenerPromedioTarifas(){
